@@ -1,8 +1,13 @@
 # LSTM-Air-Quality-Forecasting--VAYU
- Air quality prediction project utilizing LSTM models, data cleaning, visualization, and comparison of Simple LSTM and Stacked LSTM models.
+Air quality prediction project utilizing LSTM models, data cleaning, visualization, and comparison of Simple LSTM and Stacked LSTM models.
 
 Summary:
 This project focuses on predicting Air Quality Index (AQI) values using an LSTM model. The project encompasses data acquisition from the OpenAQ API, data cleaning, exploratory data analysis, feature engineering, AQI calculation, and the development of two LSTM models: Simple LSTM and Stacked LSTM. The models are trained, evaluated, and compared based on their prediction performance. The project also includes data visualization and interpretation of the results.
+
+Problem: Air pollution is a major environmental issue that affects the health of millions of people worldwide. The increasing level of air pollution in urban areas has become a major concern for the public as it can cause several health problems like asthma, lung cancer, and other respiratory illnesses.
+
+Solution: In this project, we aim to predict the air quality index (AQI) using machine learning algorithms such as LSTM and Stacked LSTM. The input data for this project is taken from the API OpenAq (Website - https://openaq.org/) (API Playground - https://docs.openaq.org/reference/averages_v2_get_v2_averages_get). The data includes parameters such as PM1, PM2.5, PM10, UM010, UM025, and UM100. By using these parameters, we can predict the AQI of the air in real-time.
+
 
 Flow of the Air Quality Project:
 
