@@ -1,39 +1,162 @@
-# LSTM-Air-Quality-Forecasting--VAYU
-Air quality prediction project utilizing LSTM models, data cleaning, visualization, and comparison of Simple LSTM and Stacked LSTM models.
+# 🧠 VAYU - Air Quality Prediction using LSTM and Stacked LSTM
 
-Summary:
-This project focuses on predicting Air Quality Index (AQI) values using an LSTM model. The project encompasses data acquisition from the OpenAQ API, data cleaning, exploratory data analysis, feature engineering, AQI calculation, and the development of two LSTM models: Simple LSTM and Stacked LSTM. The models are trained, evaluated, and compared based on their prediction performance. The project also includes data visualization and interpretation of the results.
+Air pollution is a pressing environmental challenge, especially in urban areas where millions of people are exposed to hazardous air quality. This project leverages machine learning techniques, particularly **LSTM (Long Short-Term Memory)** and **Stacked LSTM**, to **predict the Air Quality Index (AQI)** using real-time sensor data from the [OpenAQ API](https://openaq.org/).
 
-Problem: Air pollution is a major environmental issue that affects the health of millions of people worldwide. The increasing level of air pollution in urban areas has become a major concern for the public as it can cause several health problems like asthma, lung cancer, and other respiratory illnesses.
+---
 
-Solution: In this project, we aim to predict the air quality index (AQI) using machine learning algorithms such as LSTM and Stacked LSTM. The input data for this project is taken from the API OpenAq (Website - https://openaq.org/) (API Playground - https://docs.openaq.org/reference/averages_v2_get_v2_averages_get). The data includes parameters such as PM1, PM2.5, PM10, UM010, UM025, and UM100. By using these parameters, we can predict the AQI of the air in real-time.
+## 🌍 Problem Statement
 
+Air pollution causes significant health risks such as asthma, lung disease, and cancer. Accurate AQI prediction can help authorities and individuals take preventive measures in time.
 
-Flow of the Air Quality Project:
+---
 
-Data Acquisition:
-Utilize the OpenAQ API to retrieve historical air quality data. Store the data in a structured format for further analysis.
+## ✅ Project Objectives
 
-Data Cleaning:
-Remove any irrelevant or redundant columns. Handle missing values, outliers, and data inconsistencies. Ensure data consistency and integrity. 
+- Collect real-time air quality data from OpenAQ API
+- Clean and preprocess the data (PM1, PM2.5, PM10, UM010, UM025, UM100)
+- Visualize pollution trends and parameter correlations
+- Calculate AQI based on Indian and WHO guidelines
+- Train predictive models using:
+  - Simple LSTM
+  - 3-layer Stacked LSTM
+  - 4-layer Stacked LSTM
+- Compare RMSE performance metrics
+- Generate actionable insights for public health
 
-Exploratory Data Analysis (EDA):
-Analyze the distribution and summary statistics of the data. Identify patterns, trends, and correlations. Visualize the data using plots, histograms, and heatmaps. Gain insights into the data characteristics.
+---
 
-Feature Engineering:
-Extract relevant features from the dataset. Transform or encode categorical variables if necessary. Engineer new features that may improve the predictive performance.
+## 📦 Tech Stack
 
-AQI Calculation:
-Use the relevant pollutants' concentrations and their respective air quality standards to calculate the AQI. Apply appropriate formulas or lookup tables to convert pollutant concentrations to AQI values. Associate the calculated AQI with the corresponding timestamp.
+- **Python**
+- **Pandas, NumPy**
+- **Matplotlib, Seaborn, Folium**
+- **Keras / TensorFlow**
+- **Sklearn**
+- **OpenAQ API**
+- **Mlxtend** (for Association Rule Mining)
 
-Data Visualization:
-Create visualizations to explore the relationship between AQI and other variables. Plot time series data to observe temporal patterns and trends. Generate charts, graphs, and maps to depict the spatial distribution of air quality.
+---
 
-Simple LSTM Model:
-Prepare the data for training and testing. Split the dataset into training and testing sets. Create a simple LSTM model architecture. Compile the model with appropriate loss function and optimizer. Train the model using the training data. Evaluate the model's performance using appropriate metrics. Visualize the predicted AQI values against the actual values.
+## 📊 Data Source
 
-Stacked LSTM Model:
-Repeat the data preparation and splitting steps. Design a stacked LSTM model architecture. Compile and train the model. Evaluate the model's performance and compare it with the Simple LSTM model. Analyze the results and draw conclusions on the model's effectiveness.
+- API: [OpenAQ Measurements API](https://docs.openaq.org/reference/averages_v2_get_v2_averages_get)
+- Location Used: **Pride Orchid, Whitefield, Bangalore**
+- Data Extracted: PM1, PM2.5, PM10, UM010, UM025, UM100
 
-Documentation and Reporting:
-Provide a detailed summary of the project, including the objectives, methodologies, and findings. Present the results and model comparisons in a clear and concise manner. Include visualizations, code snippets, and explanations to aid understanding. Make the project code, datasets, and results accessible on GitHub for reference and reproducibility. By following this flow, the project ensures a comprehensive approach to air quality prediction, covering all aspects from data acquisition to model evaluation. It provides a well-documented and reproducible project that can serve as a valuable resource for researchers, practitioners, and anyone interested in air quality analysis and prediction.
+---
+
+## 📌 Workflow Overview
+
+1. **Fetch & Store Data**:
+   - Pull measurements from OpenAQ API
+   - Store raw data to CSV
+
+2. **Preprocessing**:
+   - Drop unnecessary columns
+   - Parse timestamp into date & time
+   - Pivot data for time-series modeling
+   - Normalize values for association mining
+
+3. **Visualization**:
+   - Plot PM and UM concentration trends
+   - Display WHO vs India AQI standards
+   - Map sensor locations using Folium
+   - Correlation matrix heatmaps
+
+4. **AQI Calculation**:
+   - Based on Indian AQI standards (PM2.5 & PM10)
+   - Custom function to assign AQI category
+
+5. **Association Rule Mining**:
+   - Apriori algorithm with min support 0.1 and confidence 0.7
+   - Identify co-occurrence of pollutant levels
+
+6. **Modeling**:
+   - Split data into train/test
+   - Apply MinMax scaling
+   - Train three models:
+     - Simple LSTM
+     - 3-layer Stacked LSTM
+     - 4-layer Stacked LSTM
+   - Evaluate with RMSE
+
+---
+
+## 🧪 Model Results
+
+| Model Type           | Train RMSE | Test RMSE |
+|----------------------|------------|-----------|
+| Simple LSTM          | 32.38      | 29.93     |
+| 3-layer Stacked LSTM | 8.03       | 3.16      |
+| 4-layer Stacked LSTM | 7.48       | 3.13      |
+
+✅ **Stacked LSTM outperforms Simple LSTM** by capturing temporal dependencies more effectively.
+
+---
+
+## 🔬 Sample Visualizations
+
+- **PM Concentrations Over Time**
+- **AQI Trends**
+- **Correlation Matrix**
+- **Geolocation Map of Indian Sensors**
+
+*(Use `plt.show()` or export to display in notebooks)*
+
+---
+
+## 📍 How to Use
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/yourusername/air-quality-prediction.git
+   cd air-quality-prediction
+   ```
+
+2. Install requirements:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Run the main notebook/script:
+
+   ```bash
+   python main.py
+   ```
+
+---
+
+## 🌱 Tips to Reduce Air Pollution
+
+* Use public transport or carpool
+* Turn off appliances when not in use
+* Plant trees and reduce plastic use
+* Avoid burning waste
+* Switch to energy-efficient products
+* Raise awareness in your community
+
+---
+
+## 📌 Future Improvements
+
+* Incorporate meteorological data (humidity, temperature)
+* Use other time series models like GRU, ARIMA
+* Add regional emission data
+* Deploy as a real-time web dashboard
+
+---
+
+## 📜 License
+
+MIT License © 2025
+
+---
+
+## 🙌 Acknowledgments
+
+* [OpenAQ](https://openaq.org/)
+* WHO & CPCB for AQI standards
+* TensorFlow/Keras for model training
+
+---
